@@ -1,4 +1,5 @@
 using CarWashApps.Models;
+using CarWashApps.Models.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

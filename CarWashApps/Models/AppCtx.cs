@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using CarWashApps.Models.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarWashApps.Models
@@ -10,5 +11,7 @@ namespace CarWashApps.Models
         {
             Database.EnsureCreated();
         }
+
+        public DbSet<ListService> ListServices { get; set; }
     }
 }

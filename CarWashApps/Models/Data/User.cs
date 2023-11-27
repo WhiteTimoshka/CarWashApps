@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace CarWashApps.Models
+namespace CarWashApps.Models.Data
 {
     public class User : IdentityUser
     {
