@@ -16,5 +16,8 @@ namespace CarWashApps.Models.Data
 
         [Display(Name = "Описание услуги")]
         public string? ServiceDescription { get; set; }
+
+        // Навигация
+        public ICollection<CostService> CostServices { get; set; }
     }
 }

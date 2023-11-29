@@ -1,0 +1,44 @@
+﻿@model CarWashApps.Models.Data.CostService
+
+@{
+    ViewData["Title"] = "Стоимость";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Главная</a></li>
+        <li class="breadcrumb-item"><a asp-controller="CostServices" asp-action="Index">Список цен</a></li>
+        <li class="breadcrumb-item active">Просмотр стоимости</li>
+    </ol>
+</nav>
+
+<h3>
+    <a class="btn text-dark" asp-action="Index" title="Вернуться к списку">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    Просмотр стоимости
+</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ListService)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ListService.ServiceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateCost)
+        </dd>
+    </dl>
+</div>

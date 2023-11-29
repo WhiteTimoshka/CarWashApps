@@ -13,5 +13,6 @@ namespace CarWashApps.Models
         }
 
         public DbSet<ListService> ListServices { get; set; }
+        public DbSet<CostService> CostServices { get; set; }
     }
 }
