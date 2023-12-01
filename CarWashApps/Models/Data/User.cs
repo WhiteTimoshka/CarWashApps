@@ -14,7 +14,6 @@ namespace CarWashApps.Models.Data
         [Required(ErrorMessage = "Введите Фамилию")]
         public string Surname { get; set; }
         public DateTime RegDate { get; set; }
-        public string IdRight { get; set; }
 
         //Навигационные св-ва
     }

@@ -164,7 +164,7 @@ namespace CarWashApps.Controllers
             }
             // IdentityUser user = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
 
-            ViewData["IdFormOfStudy"] = new SelectList(
+            ViewData["IdService"] = new SelectList(
                 _context.ListServices,
                 "Id", "ServiceName", costService.IdService);
             return View(model);
