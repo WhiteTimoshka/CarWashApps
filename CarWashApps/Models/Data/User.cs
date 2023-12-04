@@ -5,8 +5,7 @@ namespace CarWashApps.Models.Data
 {
     public class User : IdentityUser
     {
-        //Дополнительные поля для каждого пользователя
-        public int Id { get; set; }
+        //Дополнительные поля для каждого пользователя        
         [Display(Name = "Имя")]
         [Required(ErrorMessage = "Введите Имя")]
         public string NameUser { get; set; }
@@ -15,6 +14,8 @@ namespace CarWashApps.Models.Data
         public string Surname { get; set; }
         public DateTime RegDate { get; set; }
 
+
         //Навигационные св-ва
+        public ICollection<Order> Orders { get; set; }
     }
 }

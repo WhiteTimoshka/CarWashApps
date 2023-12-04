@@ -45,7 +45,7 @@ namespace CarWashApps.Controllers
             // при отображении страницы заполняем элемент "выпадающий список" формами обучения
             // при этом указываем, что в качестве идентификатора используется поле "Id"
             // а отображать пользователю нужно поле "FormOfEdu" - название формы обучения
-            ViewData["IdService"] = new SelectList(_context.ListServices, "Id", "ServiceName");
+            ViewData["IdService"] = new SelectList(_context.ListServices.OrderBy(o=>o.ServiceName), "Id", "ServiceName");
             return View();
         }
 
@@ -115,7 +115,7 @@ namespace CarWashApps.Controllers
             // в списке в качестве текущего элемента устанавливаем значение из базы данных,
             // указываем параметр specialty.IdFormOfStudy
             ViewData["IdService"] = new SelectList(
-                _context.ListServices,
+                _context.ListServices.OrderBy(o => o.ServiceName),
                 "Id", "ServiceName", costService.IdService);
             return View(model);
         }
