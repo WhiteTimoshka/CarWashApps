@@ -17,5 +17,6 @@ namespace CarWashApps.Models.Data
 
         //Навигационные св-ва
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }
