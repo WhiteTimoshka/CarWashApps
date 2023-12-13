@@ -12,9 +12,11 @@ namespace CarWashApps.Models.Data
         [Display(Name = "Фамилия")]
         [Required(ErrorMessage = "Введите Фамилию")]
         public string Surname { get; set; }
+        [Display(Name = "Дата регистрации")]
+        [Required]
         public DateTime RegDate { get; set; }
 
-
+        
         //Навигационные св-ва
         public ICollection<Order> Orders { get; set; }
         public ICollection<Review> Reviews { get; set; }

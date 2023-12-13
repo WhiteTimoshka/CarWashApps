@@ -20,6 +20,5 @@ namespace CarWashApps.ViewModels.Users
         [Display(Name = "Имя")]
         public string NameUser { get; set; }
 
-        public DateTime RegDate { get; set; }
     }
 }

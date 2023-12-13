@@ -1,5 +1,4 @@
-﻿using CarWashApps.Models.Data;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarWashApps.Models.Data

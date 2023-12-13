@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CarWashApps.Models;
+using CarWashApps.Models.Data;
+using CarWashApps.ViewModels.CostServices;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CarWashApps.Models;
-using CarWashApps.Models.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
-using CarWashApps.ViewModels.CostServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarWashApps.Controllers
 {
-/*    [Authorize(Roles = "admin, registeredUser")]*/
+    /*    [Authorize(Roles = "admin, registeredUser")]*/
     public class CostServicesController : Controller
     {
         private readonly AppCtx _context;

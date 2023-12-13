@@ -16,6 +16,15 @@
         <i class="far fa-plus-square"></i>  Добавить пользователя
     </a>
 </h6>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Поиск по фамилии: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Поиск" class="btn btn-default" /> |
+            <a asp-action="Index">Вернуться ко всему списку</a>
+        </p>
+    </div>
+</form>
 
 <div class="table-responsive">
     <table class="table table-bordered text-nowrap table-sm">
@@ -24,13 +33,13 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Surname)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SurnameSortParm"]">@Html.DisplayNameFor(model => model.Surname)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NameUser)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameUserSortParm"]">@Html.DisplayNameFor(model => model.NameUser)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RegDate)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["RegDateSortParm"]">@Html.DisplayNameFor(model => model.RegDate)</a>
             </th>
             <th></th>
         </tr>

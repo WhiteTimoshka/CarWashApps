@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EducateApp.Controllers
 {
@@ -20,7 +21,40 @@ namespace EducateApp.Controllers
 
         // отображение списка пользователей
         // действия для начальной страницы Index
-        public IActionResult Index() => View(_userManager.Users.ToList());
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        {
+            //NameUser Surname RegDate
+            ViewData["NameUserSortParm"] = String.IsNullOrEmpty(sortOrder) ? "nameUser_desc" : "";
+            ViewData["SurnameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "surname_desc" : "";
+            ViewData["RegDateSortParm"] = sortOrder == "Date" ? "regDate_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
+
+            var users = from u in _userManager.Users
+                           select u;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.Surname.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "nameUser_desc":
+                    users = users.OrderByDescending(u => u.NameUser);
+                    break;
+                case "surname_desc":
+                    users = users.OrderByDescending(u => u.Surname);
+                    break;
+                case "Date":
+                    users = users.OrderBy(u => u.RegDate);
+                    break;
+                case "regDate_desc":
+                    users = users.OrderByDescending(u => u.RegDate);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.NameUser);
+                    break;
+            }
+            return View(await users.AsNoTracking().ToListAsync());
+        }
 
 
         // действия для создания пользователя Create
@@ -37,7 +71,7 @@ namespace EducateApp.Controllers
                     UserName = model.Email,
                     Surname = model.Surname,
                     NameUser = model.NameUser,
-                    RegDate = DateTime.Now,
+                    RegDate = DateTime.Today,
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -52,6 +86,7 @@ namespace EducateApp.Controllers
                     }
                 }
             }
+
             return View(model);
         }
 
@@ -70,7 +105,6 @@ namespace EducateApp.Controllers
                 Email = user.Email,
                 Surname = user.Surname,
                 NameUser = user.NameUser,
-                RegDate = user.RegDate
             };
             return View(model);
         }
@@ -87,7 +121,6 @@ namespace EducateApp.Controllers
                     user.UserName = model.Email;
                     user.Surname = model.Surname;
                     user.NameUser = model.NameUser;
-                    user.RegDate = model.RegDate;
 
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)
